@@ -13,10 +13,10 @@ module.exports.createNewItem = (req, res) => {
   }).catch(err => console.log(err));
 };
 
-module.exports.changeItemInfo = (req, res) => {
+module.exports.changeItemInfo = async (req, res) => {
   try {
-    const item = await Item.updateOne({ _id: req.params.id }, req.body);
-    res.send(item);
+    await Item.updateOne({ _id: req.params.id }, req.body);
+    res.send({ _id: req.params.id }, req.body);
   } catch (err) {
     console.log(err);
   }
@@ -24,8 +24,8 @@ module.exports.changeItemInfo = (req, res) => {
 
 module.exports.deleteItem = async (req, res) => {
   try {
-    const item = await Item.deleteOne({_id: req.params.id});
-    res.send(item);
+    await Item.deleteOne({_id: req.params.id});
+    res.send({_id: req.params.id});
   } catch (err) {
     console.log(err);
   }
