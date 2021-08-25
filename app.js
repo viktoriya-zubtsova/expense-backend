@@ -20,4 +20,4 @@ mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true})
       console.log(`Example app listening on port ${appConfig.PORT}!`)
     });
   })
-  .catch((e) => console.log('Failed to connect to DB: ', e));
+  .catch((err) => console.log('Failed to connect to DB: ', err));

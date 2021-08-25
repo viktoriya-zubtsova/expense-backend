@@ -14,9 +14,12 @@ module.exports.createNewItem = (req, res) => {
 };
 
 module.exports.changeItemInfo = (req, res) => {
-  Item.updateOne({ _id: req.params.id }, req.body).then(result => {
-    res.send(req.body);
-  }).catch(err => console.log(err));
+  try {
+    const item = await Item.updateOne({ _id: req.params.id }, req.body);
+    res.send(item);
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 module.exports.deleteItem = async (req, res) => {
