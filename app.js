@@ -5,6 +5,7 @@ const cors = require('cors');
 const apiRoutes = require('./modules/routes/routes');
 const databaseConfig = require('./config/databaseConfig');
 const appConfig = require('./config/appConfig');
+require('dotenv').config({ path: require('find-config')('.env') });
 
 const app = express();
 
