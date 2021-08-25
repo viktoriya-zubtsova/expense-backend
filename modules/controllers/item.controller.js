@@ -16,7 +16,7 @@ module.exports.createNewItem = (req, res) => {
 module.exports.changeItemInfo = async (req, res) => {
   try {
     await Item.updateOne({ _id: req.params.id }, req.body);
-    res.send({ _id: req.params.id }, req.body);
+    res.send({ _id: req.params.id, body: req.body });
   } catch (err) {
     console.log(err);
   }
