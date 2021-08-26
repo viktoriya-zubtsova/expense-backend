@@ -8,9 +8,17 @@ const {
   deleteItem
 } = require('../controllers/item.controller');
 
-router.get('/items', getAllItems);
-router.post('/items', createNewItem);
-router.patch('/items/:id', changeItemInfo);
-router.delete('/items/:id', deleteItem);
+const {
+  createNewUser,
+  verifyToken,
+  loginUser
+} = require('../controllers/user.controller');
+
+router.get('/items', verifyToken, getAllItems);
+router.post('/items', verifyToken, createNewItem);
+router.patch('/items/:id', verifyToken, changeItemInfo);
+router.delete('/items/:id', verifyToken, deleteItem);
+router.post('/register', createNewUser);
+router.post('/login', loginUser);
 
 module.exports = router;
