@@ -9,7 +9,7 @@ module.exports.getAllItems = (req, res) => {
 module.exports.createNewItem = (req, res) => {
   const item = new Item(req.body);
   item.save().then(result => {
-    res.send(item);
+    res.send(result);
   }).catch(err => console.log(err));
 };
 
